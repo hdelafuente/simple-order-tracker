@@ -1,0 +1,11 @@
+.container {
+  width: 350px;
+}
+
+.text-small {
+  font-size: small;
+}
+
+.card {
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+}
