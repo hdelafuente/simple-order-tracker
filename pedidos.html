@@ -3,11 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>Pedidos</title>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script type = "text/javascript" src="script.js"></script>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"> 
-      <link rel="stylesheet" type="text/css" href="estilo.css">
+	  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"> 
+    <link rel="stylesheet" type="text/css" href="estilo.css">
   </head>
   <body>
   	<nav class="navbar navbar-light bg-info">
@@ -48,5 +47,24 @@
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="script.js"></script>
+  <script>
+    function load() {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const order = urlParams.get('numero_orden');
+      console.log(order)
+      if (order) {
+        var input = document.getElementById("userInput");
+        input.value = order;
+        fetchProduct()
+      }
+      else {
+        console.log("no pasa nada");
+        return 0
+      }
+    }
+    window.onload = load;
+  </script>
   </body>
 </html>
