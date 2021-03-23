@@ -48,23 +48,25 @@
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   <script type="text/javascript" src="script.js"></script>
-  <script>
-    function load() {
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      const order = urlParams.get('numero_orden');
-      console.log(order)
-      if (order) {
-        var input = document.getElementById("userInput");
-        input.value = order;
-        fetchProduct()
-      }
-      else {
-        console.log("no pasa nada");
-        return 0
-      }
+  <script> 
+    function triggerEvent(element, event) {
+      const clickEvent = new Event(event);
+      element.dispatchEvent(clickEvent);
     }
-    window.onload = load;
+
+    function getParameterByName(name, url) {
+      var match = RegExp('[?&]' + name + '=([^&]*)').exec(url);
+      return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+    };
+
+    const trackingId = getParameterByName('numero_orden', window.location.search);
+    
+    if (trackingId != null) {
+      console.log(trackingId);
+      document.getElementById('userInput').value = trackingId;
+      triggerEvent(document.getElementById('boton'), 'click');
+    }
+
   </script>
   </body>
 </html>
